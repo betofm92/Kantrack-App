@@ -32,7 +32,7 @@ Se fijó Expo SDK 57 para este piloto: SDK 58 se publicó el 15 de octubre de 20
 
 La app no autentica a usuarios reales ni consulta o sincroniza con el backend. No activa rastreo, push o SOS remoto. Las fotos se copian al almacenamiento privado local, pero no están cifradas ni subidas al servidor; no constituyen una prueba de entrega remota. SQLite tampoco está cifrada y contiene datos ficticios únicamente. La cola **no debe enviarse** automáticamente cuando aparezcan endpoints: primero se deben cerrar los contratos, la política de reintentos y la seguridad descritos en [MOBILE_CONTRACT_GAPS.md](docs/MOBILE_CONTRACT_GAPS.md).
 
-El alcance y las decisiones se detallan en [ARCHITECTURE.md](docs/ARCHITECTURE.md). Los documentos de especificación y roadmap del backend se consultaron sin modificarlos.
+El alcance y las decisiones se detallan en [ARCHITECTURE.md](docs/ARCHITECTURE.md). Para modificar la interfaz en futuras iteraciones, consulta [UI_COMPONENTS.md](docs/UI_COMPONENTS.md). Los documentos de especificación y roadmap del backend se consultaron sin modificarlos.
 
 ## Revisión de dependencias
 

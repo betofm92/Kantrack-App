@@ -12,7 +12,8 @@ La especificación sitúa React Native + Expo en KT-012-03, después del CONNECT
 
 ```mermaid
 flowchart TD
-  UI[App.tsx · pantallas] --> UC[usePilot · casos de uso]
+  UI[ui/screens · pantallas] --> UC[usePilot · casos de uso]
+  DS[ui/components + widgets + theme · sistema visual] --> UI
   UC --> Domain[domain/driver · reglas puras]
   UC --> Ports[domain/ports · contratos]
   Ports --> Mock[MockDriverRepository]
@@ -21,7 +22,7 @@ flowchart TD
   Tracking[domain/tracking · política de turno] -. integración futura .-> UC
 ```
 
-La UI solo solicita acciones. El dominio valida las transiciones; el caso de uso persiste cada acción antes de reflejarla en pantalla. El repositorio de viajes y la cola se inyectarán por interfaces cuando exista API; hoy `usePilot` construye las implementaciones de demostración. La cola separa acciones por tenant/conductor y conserva su identificador. `replay` reconstruye estado y marca conflictos de acciones que ya no aplican.
+La UI solo solicita acciones. `App.tsx` compone pantallas y navegación, `ui/screens` contiene una pantalla por archivo, y `ui/components.tsx`, `ui/widgets.tsx` y `ui/theme.ts` concentran patrones visuales reutilizables. [UI_COMPONENTS.md](UI_COMPONENTS.md) indica dónde modificar cada elemento. El dominio valida las transiciones; el caso de uso persiste cada acción antes de reflejarla en pantalla. El repositorio de viajes y la cola se inyectarán por interfaces cuando exista API; hoy `usePilot` construye las implementaciones de demostración. La cola separa acciones por tenant/conductor y conserva su identificador. `replay` reconstruye estado y marca conflictos de acciones que ya no aplican.
 
 ## Seguridad y privacidad
 
