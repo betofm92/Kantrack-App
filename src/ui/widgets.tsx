@@ -3,12 +3,13 @@ import { ActivityIndicator, Alert, Pressable, Text, View } from 'react-native';
 import type { Stop, Trip } from '../domain/driver';
 import type { Pilot, Tab } from './types';
 import { actionLabel, stopLabel, tripLabel } from './labels';
-import { Button, Body, CardTitle, Chip, Divider, Eyebrow, Hint, LinkText, Panel, PhotoPreview, Row } from './components';
+import { BrandLogo, Button, Body, CardTitle, Chip, Divider, Eyebrow, Hint, LinkText, Panel, PhotoPreview, Row } from './components';
 import { colors, styles } from './theme';
 import type { usePhotoPicker } from './usePhotoPicker';
 
 export function AppHeader() {
-  return <View style={styles.header}><View><Text style={styles.brand}>KANTRACK</Text><Text style={styles.brandSub}>CONDUCTOR</Text></View>
+  return <View style={styles.header}><View style={styles.brandRow}><BrandLogo />
+    <View><Text style={styles.brand}>KANTRACK</Text><Text style={styles.brandSub}>CONDUCTOR</Text></View></View>
     <View style={styles.demoBadge}><Text style={styles.demoText}>DEMO</Text></View></View>;
 }
 

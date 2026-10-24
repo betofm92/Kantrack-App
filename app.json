@@ -10,6 +10,7 @@
     ],
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "icon": "./assets/brand/kantrack-mark.png",
     "ios": {
       "bundleIdentifier": "com.kantrack.driver",
       "supportsTablet": false,

@@ -2,6 +2,12 @@ import type { PropsWithChildren } from 'react';
 import { Image, Pressable, ScrollView, Text, TextInput, View, type TextInputProps } from 'react-native';
 import { styles } from './theme';
 
+export function BrandLogo() {
+  return <View style={styles.brandLogoFrame} accessible={false}>
+    <Image source={require('../../assets/brand/kantrack-mark.png')} style={styles.brandLogoImage} resizeMode="contain" />
+  </View>;
+}
+
 export function Screen({ children, keyboard = false }: PropsWithChildren<{ keyboard?: boolean }>) {
   return <ScrollView contentContainerStyle={styles.screen} keyboardShouldPersistTaps={keyboard ? 'handled' : 'never'}>{children}</ScrollView>;
 }
@@ -37,12 +43,14 @@ export function Button({ label, onPress, variant = 'primary', disabled = false }
 }) {
   return <Pressable accessibilityRole="button" accessibilityState={{ disabled }} disabled={disabled} onPress={onPress}
     style={[styles.button, variant === 'outline' && styles.buttonOutline, variant === 'danger' && styles.buttonDanger, disabled && styles.disabled]}>
-    <Text style={[styles.buttonText, variant === 'outline' && styles.buttonOutlineText]}>{label}</Text>
+    <Text style={[styles.buttonText, variant === 'outline' && styles.buttonOutlineText, variant === 'danger' && styles.buttonDangerText]}>{label}</Text>
   </Pressable>;
 }
 
 export function Chip({ label, tone = 'neutral' }: { label: string; tone?: 'neutral' | 'success' | 'warning' }) {
-  return <View style={[styles.chip, tone === 'success' && styles.chipSuccess, tone === 'warning' && styles.chipWarning]}><Text style={styles.chipText}>{label}</Text></View>;
+  return <View style={[styles.chip, tone === 'success' && styles.chipSuccess, tone === 'warning' && styles.chipWarning]}>
+    <Text style={[styles.chipText, tone === 'success' && styles.chipSuccessText, tone === 'warning' && styles.chipWarningText]}>{label}</Text>
+  </View>;
 }
 
 export function FieldInput(props: TextInputProps) {
