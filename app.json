@@ -9,7 +9,7 @@
       "ios"
     ],
     "orientation": "portrait",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "icon": "./assets/brand/kantrack-mark.png",
     "ios": {
       "bundleIdentifier": "com.kantrack.driver",

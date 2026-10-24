@@ -5,8 +5,9 @@ La interfaz está organizada para que un cambio compartido se haga una vez y apa
 | Quieres cambiar… | Edita… | Se refleja en… |
 | --- | --- | --- |
 | Colores, espacios, tipografía y estilos comunes | `src/ui/theme.ts` | Toda la app |
+| Preferencia de apariencia clara u oscura | `src/ui/ThemeProvider.tsx` | Toda la app y su siguiente apertura |
 | Botones, tarjetas, textos, indicadores, campos y avisos | `src/ui/components.tsx` | Todas las pantallas que los usan |
-| Cabecera, pestañas, SOS, tarjetas de viaje/parada, selección de fotos | `src/ui/widgets.tsx` | Inicio, viajes, paradas, reportes y estructura global |
+| Cabecera, pestañas, SOS, tarjetas de viaje/parada, métricas y selección de fotos | `src/ui/widgets.tsx` | Inicio, viajes, mapa, paradas, reportes y estructura global |
 | Textos de estados y acciones | `src/ui/labels.ts` | Tarjetas, detalles y actividad |
 | Flujo de cámara y galería | `src/ui/usePhotoPicker.ts` | POD y reportes de campo |
 | Contenido y acciones de una pantalla | `src/ui/screens/<Pantalla>Screen.tsx` | Solo esa pantalla |

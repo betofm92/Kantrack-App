@@ -3,6 +3,7 @@ node_modules/
 .npm-cache/
 dist/
 dist-ios/
+dist-android/
 android/
 ios/
 .env

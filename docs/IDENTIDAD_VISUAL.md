@@ -1,6 +1,6 @@
 # Identidad visual de la app
 
-La app usa la paleta clara predeterminada de la plataforma web. La referencia es `packages/ui/src/tokens/tokens.css` del proyecto `KanTrackFinal-Hexagonal` (incluido el valor de marca heredado de `:root`). Los colores de la app están centralizados en `src/ui/theme.ts`; las pantallas consumen componentes compartidos y no definen una paleta propia.
+La app usa las paletas clara y oscura de la plataforma web. La referencia es `packages/ui/src/tokens/tokens.css` del proyecto `KanTrackFinal-Hexagonal` (incluido el valor de marca heredado de `:root`). Los colores y estilos de la app están centralizados en `src/ui/theme.ts`; las pantallas consumen componentes compartidos y no definen una paleta propia.
 
 | Uso | Valor | Token web |
 | --- | --- | --- |
@@ -16,6 +16,8 @@ La app usa la paleta clara predeterminada de la plataforma web. La referencia es
 | Información | `#E6F2FF` / `#084D87` | `--kt-status-info-bg` / `-fg` |
 | Error | `#FCE6E8` / `#8A1C2A` | `--kt-status-danger-bg` / `-fg` |
 
+La paleta oscura usa fondo `#0A1626`, superficies `#102039`, texto `#E8EEF8`, borde `#2A4465` y naranja de marca `#F99F0C`, de los mismos tokens web. `ThemeProvider` aplica la paleta a todos los componentes. El interruptor en Perfil guarda la preferencia con `expo-sqlite/kv-store` y sincroniza el estilo de la interfaz nativa.
+
 El logo entregado se conserva en `assets/brand/kantrack-mark.png`. El componente reutilizable `BrandLogo` lo presenta en la cabecera; `app.json` lo declara como icono para la app compilada. Expo Go mantiene el icono de Expo Go en la pantalla de inicio del iPhone.
 
-Este cambio afecta la presentación visual. Los flujos, datos, contratos y acciones de la aplicación siguen en sus módulos existentes.
+El rediseño compone componentes compartidos y conserva las reglas de negocio, los contratos y la persistencia de las acciones en sus módulos existentes.

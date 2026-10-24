@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Alert, View } from 'react-native';
 import type { Pilot } from '../types';
-import { Body, Button, Eyebrow, FieldInput, Heading, InfoPanel, Screen, SectionTitle, Subtitle } from '../components';
+import { Button, Eyebrow, FieldInput, Heading, InfoPanel, Screen, ScreenHeader, SectionTitle, Subtitle } from '../components';
 import { ChoiceChips, PhotoPickerButtons } from '../widgets';
 import { usePhotoPicker } from '../usePhotoPicker';
-import { styles } from '../theme';
+import { useTheme } from '../ThemeProvider';
 
 type ReportType = 'fuel' | 'expense' | 'incident' | 'inspection';
 const choices: { value: ReportType; label: string }[] = [
@@ -12,7 +12,8 @@ const choices: { value: ReportType; label: string }[] = [
   { value: 'incident', label: 'Incidencia' }, { value: 'inspection', label: 'Inspección' }
 ];
 
-export function FieldReportsScreen({ pilot }: { pilot: Pilot }) {
+export function FieldReportsScreen({ pilot, back }: { pilot: Pilot; back: () => void }) {
+  const { styles } = useTheme();
   const [type, setType] = useState<ReportType>('incident');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
@@ -33,6 +34,7 @@ export function FieldReportsScreen({ pilot }: { pilot: Pilot }) {
   };
 
   return <Screen keyboard>
+    <ScreenHeader title="Reporte de campo" onBack={back} />
     <Eyebrow>OPERACIÓN EN CAMPO</Eyebrow><Heading>Reportes</Heading>
     <Subtitle>Registra eventos de tu jornada. Todo queda local en el modo demo.</Subtitle>
     <ChoiceChips options={choices} value={type} onChange={setType} />
