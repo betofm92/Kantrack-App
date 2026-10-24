@@ -3,7 +3,7 @@ import { StatusBar, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { usePilot } from './src/application/usePilot';
 import { AppHeader, BottomTabs, ErrorBanner, LoadingState, SosButton } from './src/ui/widgets';
-import { colors, styles } from './src/ui/theme';
+import { styles } from './src/ui/theme';
 import type { Tab } from './src/ui/types';
 import { HomeScreen } from './src/ui/screens/HomeScreen';
 import { TripsScreen } from './src/ui/screens/TripsScreen';
@@ -26,7 +26,7 @@ function AppContent() {
   const changeTab = (next: Tab) => { setTab(next); setTripId(null); setStopId(null); };
 
   return <SafeAreaView style={styles.app} edges={['top', 'bottom']}>
-    <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+    <StatusBar barStyle="dark-content" />
     <AppHeader />
     {pilot.error && <ErrorBanner message={pilot.error} retry={() => { void pilot.reload(); }} />}
     {pilot.loading ? <LoadingState /> :

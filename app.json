@@ -4,33 +4,67 @@
     "slug": "kantrack-driver",
     "scheme": "kantrack-driver",
     "version": "0.1.0",
-    "platforms": ["android", "ios"],
+    "platforms": [
+      "android",
+      "ios"
+    ],
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "ios": {
       "bundleIdentifier": "com.kantrack.driver",
       "supportsTablet": false,
-      "infoPlist": { "UIBackgroundModes": ["location", "remote-notification"] }
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "remote-notification"
+        ]
+      }
     },
     "android": {
       "package": "com.kantrack.driver",
-      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION", "ACCESS_BACKGROUND_LOCATION", "FOREGROUND_SERVICE", "FOREGROUND_SERVICE_LOCATION", "POST_NOTIFICATIONS"]
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION",
+        "POST_NOTIFICATIONS"
+      ]
     },
     "plugins": [
-      ["expo-dev-client", { "addGeneratedScheme": false }],
-      ["expo-location", {
-        "isAndroidBackgroundLocationEnabled": true,
-        "isAndroidForegroundServiceEnabled": true,
-        "locationWhenInUsePermission": "KanTrack usa tu ubicación durante un turno activo.",
-        "locationAlwaysAndWhenInUsePermission": "KanTrack usa tu ubicación en segundo plano solo durante un turno activo. Puedes detener el turno desde la app."
-      }],
-      ["expo-image-picker", {
-        "cameraPermission": "Toma una foto como prueba de entrega.",
-        "photosPermission": "Selecciona una foto como prueba de entrega.",
-        "microphonePermission": false
-      }],
-      ["expo-secure-store", { "configureAndroidBackup": true }],
-      "expo-notifications"
+      [
+        "expo-dev-client",
+        {
+          "addGeneratedScheme": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true,
+          "locationWhenInUsePermission": "KanTrack usa tu ubicación durante un turno activo.",
+          "locationAlwaysAndWhenInUsePermission": "KanTrack usa tu ubicación en segundo plano solo durante un turno activo. Puedes detener el turno desde la app."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Toma una foto como prueba de entrega.",
+          "photosPermission": "Selecciona una foto como prueba de entrega.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true
+        }
+      ],
+      "expo-notifications",
+      "expo-sqlite",
+      "expo-status-bar",
+      "expo-web-browser"
     ]
   }
 }

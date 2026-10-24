@@ -2,20 +2,26 @@
 
 Aplicación móvil independiente para Android e iOS, construida con React Native, Expo y TypeScript. Implementa un **piloto local con datos ficticios** mientras evolucionan los contratos de CONNECT. No representa un sistema de operación real: las entregas, el SOS y las demás acciones no se transmiten.
 
-## Ejecutar
+## Probar en iPhone con Expo Go
 
-Requisitos: Node.js 22.13 o superior, npm, Android Studio o Xcode, y una compilación de desarrollo de Expo. El SDK de Expo se declara en `package.json`.
+Requisitos: Node.js 22.13 o superior, npm, Expo Go para SDK 58 en el iPhone y una cuenta gratuita de Expo. El equipo y el iPhone deben estar en la misma red Wi-Fi. Inicia sesión con la misma cuenta en Expo Go y en la terminal.
 
 ```powershell
 npm install
-npm run typecheck
-npm run test:domain
-npm start
+npx expo login
+npm run start:go
 ```
 
-La app usa módulos nativos (SQLite, almacenamiento seguro, cámara, ubicación). Para probar sus capacidades nativas hay que crear un **development build** con EAS o `npx expo run:android` / `npx expo run:ios`; Expo Go puede tener limitaciones de versión y de módulos. `eas.json` incluye perfiles de desarrollo y prueba. Antes de publicar, sustituir los identificadores `com.kantrack.driver` por los definitivos y configurar credenciales de firma y proyecto EAS.
+Escanea el QR con la Cámara del iPhone. Si la red local impide la conexión, detén el servidor con `Ctrl+C` y ejecuta `npm run start:go -- --tunnel`. El proyecto usa Expo SDK 58; `--go` fuerza la apertura en Expo Go aunque esté instalada la dependencia `expo-dev-client`.
 
-Se fijó Expo SDK 57 para este piloto: SDK 58 se publicó el 15 de octubre de 2026 y todavía exige una compilación de desarrollo para probarlo antes de la actualización de Expo Go en las tiendas. La actualización se puede planificar cuando se estabilicen los contratos y se repitan las pruebas en dispositivos.
+Para verificar el proyecto localmente:
+
+```powershell
+npm run typecheck
+npm run test:domain
+```
+
+El piloto local puede ejecutarse en Expo Go. Las capacidades nativas avanzadas que se activen en el futuro, como rastreo en segundo plano y push remoto, requerirán una **compilación de desarrollo** con EAS o `npx expo run:ios`. `eas.json` incluye perfiles de desarrollo y prueba. Antes de distribuir la app, sustituir los identificadores `com.kantrack.driver` por los definitivos y configurar credenciales de firma y proyecto EAS.
 
 ## Qué funciona en el piloto
 
@@ -36,4 +42,4 @@ El alcance y las decisiones se detallan en [ARCHITECTURE.md](docs/ARCHITECTURE.m
 
 ## Revisión de dependencias
 
-`npm audit --omit=dev --audit-level=high` detectó cuatro entradas de severidad alta por `node-forge` transitivo de Expo CLI (`GHSA-86w9-cpqp-85rv`). La recomendación automática de npm rebaja Expo a SDK 44, por lo que no se aplicó. Esta dependencia debe revisarse antes de distribuir builds; el resultado de `npm audit` no es verde.
+`npm audit --omit=dev --audit-level=high` detectó cinco entradas de severidad alta por `node-forge` y `zod` transitivos de Expo CLI (`GHSA-86w9-cpqp-85rv` y `GHSA-mrhx-c7xc-m3w5`). La recomendación automática de npm rebaja Expo a SDK 44, por lo que no se aplicó. Estas dependencias deben revisarse antes de distribuir builds; el resultado de `npm audit` no es verde.
